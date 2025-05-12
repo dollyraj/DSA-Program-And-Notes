@@ -64,7 +64,7 @@ using different starting node, it will give no of islands
 
         //using adjacency matrix
         for(int i=0;i<isConnected.length;i++){
-            if(visited[i]==0 && isConnected[src][i]==1){
+            if(isConnected[src][i]==1 && visited[i]==0){
                 dfs(i,isConnected,visited);
             }
         }
