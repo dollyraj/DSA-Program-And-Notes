@@ -7,10 +7,13 @@ public class CycleDetectionInDirectedGraph {
     /*/
     Idea--> Apply DFS, if a node in current path is encountered again
     means cycle detected
+    Idea--> Apply DFS, if a node in current path is encountered again
+    means cycle detected
+    -->This implementation does not work for Undirected Graph
      */
 
     public static boolean cycleDetectInDirectedGraph(ArrayList<ArrayList<Integer>> adjList){
-             int n=adjList.size();
+            int n=adjList.size();
             int[] visited=new int[n];
             int[] path=new int[n];
 
@@ -31,9 +34,6 @@ public class CycleDetectionInDirectedGraph {
 
         for(int nbr: adjList.get(src)){
 
-            //if that node is already visited and present in current path
-            if(path[nbr]==1)
-                return true;
 
             //if that node is not visited
             if(visited[nbr]==0){
@@ -41,6 +41,11 @@ public class CycleDetectionInDirectedGraph {
                     return true;
                 }
             }
+
+            //if that node is already visited and present in current path
+            if(visited[src]==1 && path[nbr]==1)
+                return true;
+
 
 
         }
@@ -63,12 +68,18 @@ public class CycleDetectionInDirectedGraph {
 
         //no of edges=graph.length
         //no of nodes=4
-        for(int i=0;i<4;i++){
+       /* for(int i=0;i<4;i++){
             for(int j=0;j< graph.length;j++){
-                int u=graph[i][0];
-                int v=graph[i][1];
+                int u=graph[j][0];
+                int v=graph[j][1];
                 adjList.get(u).add(v);
+
             }
+        }*/
+        for(int[] edge:graph){
+            int u=edge[0];
+            int v=edge[1];
+            adjList.get(u).add(v);
         }
 
         System.out.println(cycleDetectInDirectedGraph(adjList));
