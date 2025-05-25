@@ -17,7 +17,7 @@ and are pushed into the queue. The list of adjacent neighbors of the node
 can be accessed from the adjacency list.
 --->Repeat steps 2 and 3 until the queue becomes empty,
 and this way you can easily traverse all the nodes in the graph.
--->In this way, all the nodes are traversed in a breadthwise manner.
+--->In this way, all the nodes are traversed in a breadth wise manner.
      */
 
     public static void bfs(int[] visited,ArrayList<ArrayList<Integer>> adjList){
@@ -32,7 +32,7 @@ and this way you can easily traverse all the nodes in the graph.
            int curr= queue.poll();//retrieves and removes the head node
             System.out.print(curr+" ");
             // Get all adjacent vertices of the dequeued vertex s
-            // If a adjacent has not been visited, then mark it
+            // If an adjacent has not been visited, then mark it
             // visited and enqueue it
           for(int nbr: adjList.get(curr)){
               if(visited[nbr]==0) {
