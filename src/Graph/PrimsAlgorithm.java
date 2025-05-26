@@ -9,12 +9,23 @@ public class PrimsAlgorithm {
     //Minimum Spanning Tree
 
     /*
-    Consider any node as root node, and keep on adding minimum edge weights to get final answer
+    Given number of centers and possible connections that can be made with their cost.
+    Find minimum cost of constructing roads between centers such that it is possible to travel
+    from one center to any other via roads
 
     First argument is an integer A.
     -->A==no of nodes
 Second argument is a 2-D integer array B of size C×3 denoting edges. B[i][0]and B[i][1]are
  the distribution centers connected by the ith edge with construction cost B[i][2].
+
+ --->Approach:
+      *Possible to travel from one center to any other via roads => connected graph
+      *For n cities, minimum number of roads to connect=n-1 =>Tree
+      *Sum of all edge weights should be minimum
+      =>Minimum spanning tree
+      => Prim's Algorithm
+    Consider any node as root node, and keep on adding minimum edge weights to get final answer
+
 
  //Time complexity=
      */

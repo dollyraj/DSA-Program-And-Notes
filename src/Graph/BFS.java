@@ -18,6 +18,9 @@ can be accessed from the adjacency list.
 --->Repeat steps 2 and 3 until the queue becomes empty,
 and this way you can easily traverse all the nodes in the graph.
 --->In this way, all the nodes are traversed in a breadth wise manner.
+
+TC=O(N+E)
+SC=O(N+E)
      */
 
     public static void bfs(int[] visited,ArrayList<ArrayList<Integer>> adjList){
