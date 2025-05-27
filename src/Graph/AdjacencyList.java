@@ -2,15 +2,28 @@ package Graph;
 
 import java.util.ArrayList;
 
+/*
+Time Complexity-O(V+E)
+Space Complexity-O(V+E)
+Explanation:
+
+Each vertex stores a list of its neighbors.
+
+There are V lists (one for each vertex).
+
+The total number of items across all lists is E (or 2𝐸)
+2E for undirected graphs, since each edge appears twice).
+ */
+
 public class AdjacencyList {
 
-    public static ArrayList<Integer>[] adjacencyList(int n,int e,int[][] input){
+    public static ArrayList<ArrayList<Integer>> adjacencyList(int n,int e,int[][] input){
 
         //declare an array of arrayList
-        ArrayList[] graph=new ArrayList[n+1];
+        ArrayList<ArrayList<Integer>> graph=new ArrayList<>();
 
         for(int i=0;i<=n;i++){
-            graph[i]=new ArrayList<Integer>();
+            graph.add(new ArrayList<Integer>());
         }
 
         for(int i=0;i<e;i++){
@@ -19,8 +32,8 @@ public class AdjacencyList {
 
 
             //if bidirectional
-            graph[u].add(v);
-            graph[v].add(u);
+            graph.get(u).add(v);
+            graph.get(v).add(u);
         }
 
         return graph;
@@ -28,10 +41,10 @@ public class AdjacencyList {
     }
 
     // Method to display the adjacency list
-    public static void displayAdjList(ArrayList<Integer>[] adjacencyList) {
-        for (int i = 0; i < adjacencyList.length; i++) {
+    public static void displayAdjList(ArrayList<ArrayList<Integer>> adjacencyList) {
+        for (int i = 0; i < adjacencyList.size(); i++) {
             System.out.print(i + ": "); // Print the vertex
-            for (int j : adjacencyList[i]) {
+            for (int j : adjacencyList.get(i)) {
                 System.out.print(j + " "); // Print its adjacent
             }
             System.out.println();
@@ -54,7 +67,7 @@ public class AdjacencyList {
         input[2][0]=1;
         input[2][1]=3;
 
-        ArrayList<Integer>[] adj=adjacencyList(n,e,input);
+        ArrayList<ArrayList<Integer>> adj=adjacencyList(n,e,input);
 
 
        displayAdjList(adj);

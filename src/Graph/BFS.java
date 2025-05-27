@@ -18,9 +18,18 @@ can be accessed from the adjacency list.
 --->Repeat steps 2 and 3 until the queue becomes empty,
 and this way you can easily traverse all the nodes in the graph.
 --->In this way, all the nodes are traversed in a breadth wise manner.
+ Using Adjacency List
+Time Complexity: O(V+E)
+Explanation:
 
-TC=O(N+E)
-SC=O(N+E)
+Each vertex is enqueued and dequeued once → O(V)
+
+All edges from each vertex are traversed once → O(E)
+
+So total time is O(V+E)
+
+TC=O(V+E)
+SC=O(V)
      */
 
     public static void bfs(int[] visited,ArrayList<ArrayList<Integer>> adjList){

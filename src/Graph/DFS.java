@@ -4,9 +4,12 @@ import java.util.ArrayList;
 
 public class DFS {
 /*
-Time complexity-O(N+E)
+Time complexity-O(V+E)
+-->Each vertex is visited once:O(V)
+-->Each edge is explored once (in directed graphs) or twice (in undirected graphs):O(E)
 -->All the nodes and edges will be visited in DFS
-SC--> O(n)--> Maximum size of recursive stack
+-->So total time = O(V+E)
+SC--> O(V)--> Maximum size of recursive stack
 
 """
     - Depth First Search starts at a vertex.
@@ -15,6 +18,8 @@ SC--> O(n)--> Maximum size of recursive stack
     - Continue the above procedure until there are no more unexplored edges.
     - then terminate.
     """
+
+
  */
     public static void dfs(ArrayList<ArrayList<Integer>> graph,int src,boolean[] visited){
         //Mark visited

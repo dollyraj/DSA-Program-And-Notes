@@ -1,16 +1,18 @@
 package Graph;
-
-import java.util.ArrayList;
+/*
+Time Complexity-O(V*V)
+Space Complexity-O(V*V)
+ */
 
 public class AdjacencyMatrix {
-    public static int[][] adjacencyList(int n, int e, int[][] input){
+    public static int[][] adjacencyMatrix(int v, int e, int[][] input){
 
-        //declare an array of arrayList
-        int[][] graph=new int[n+1][n+1];
 
-        for(int i=0;i< input.length;i++){
-            graph[input[i][0]][input[i][1]]=1;
-            graph[input[i][1]][input[i][0]]=1;
+        int[][] graph=new int[v+1][v+1];
+
+        for (int[] ints : input) {
+            graph[ints[0]][ints[1]] = 1;
+            graph[ints[1]][ints[0]] = 1;
         }
 
         return graph;
@@ -43,7 +45,7 @@ public class AdjacencyMatrix {
         input[2][0]=1;
         input[2][1]=3;
 
-        int[][] adj=adjacencyList(n,e,input);
+        int[][] adj=adjacencyMatrix(n,e,input);
 
 
         displayMatrix(adj);

@@ -1,1 +1,16 @@
 Graph- connection of edges and nodes
+
+Types:
+Connected,Disconnected
+Cyclic,Acyclic
+Weighted,UnWeighted
+
+Representation-Adjacency Matrix, Adjacency List
+
+Traversal- DFS,BFS
+
+-->Multi-Source BFS
+-->MST(Minimum Spanning Tree), Prim's Algorithm
+
+Degree of Node
+-->In Degree,Out Degree
