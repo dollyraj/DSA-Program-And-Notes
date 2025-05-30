@@ -1,6 +1,8 @@
 package Graph;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.Queue;
 import java.util.Stack;
 
 /*
@@ -15,8 +17,8 @@ node u appears before v in that ordering.
 Approach---> We will do the traversal of graph,
 but before returning from a node after exploring all of its
  neighbours add this node to stack(LIFO).
-
- ----Kahn's Algorithm=Topological sorting using BFS
+--->If there is a cycle present, topological sort order is not possible.
+--->Kahn's Algorithm=Topological sorting using BFS
  */
 
 public class TopologicalSort {
@@ -37,7 +39,7 @@ public class TopologicalSort {
         st.add(src);
     }
 
-    public static ArrayList<Integer> topologicalSort(ArrayList<ArrayList<Integer>> adj){
+    public static ArrayList<Integer> topologicalSortDFS(ArrayList<ArrayList<Integer>> adj){
 
         int n= adj.size();
         int[] visited=new int[n];
@@ -63,6 +65,55 @@ public class TopologicalSort {
 
     }
 
+    public static ArrayList<Integer> topologicalSortBFS(ArrayList<ArrayList<Integer>> adj){
+
+        int n= adj.size();
+        int[] inDegree=new int[n];
+
+        Queue<Integer> q=new LinkedList<>();
+        //we will take Min Heap in case if we need lexographically smallest order
+
+        ArrayList<Integer> ans=new ArrayList<>();
+
+        //Calculate inDegree of nodes
+        for(int i=0;i<n;i++){
+            for(int nbr:adj.get(i)){
+                inDegree[nbr]+=1;
+            }
+        }
+
+        //Store nodes in queue having inDegree=0
+
+        for(int i=0;i<n;i++){
+            if(inDegree[i]==0){
+                q.add(i);
+            }
+        }
+
+        while(!q.isEmpty()){
+            int curr=q.poll();
+            //store node in ans
+            ans.add(curr);
+
+            //traverse neighbours of the node
+            for(int nbr:adj.get(curr)){
+
+                //decrement inDegree of neighbour node of current node as it is removed
+                inDegree[nbr]-=1;
+
+                //check if inDegree of any neighbour became 0. add that neighbour in queue
+                if(inDegree[nbr]==0){
+                    q.add(nbr);
+                }
+            }
+        }
+
+
+        return ans;
+
+    }
+
+
     public static void main(String[] args) {
         int V = 6;
         ArrayList<ArrayList<Integer>> adj = new ArrayList<>();
@@ -77,7 +128,7 @@ public class TopologicalSort {
         adj.get(5).add(2);
 
 
-        System.out.println(topologicalSort(adj));
+        System.out.println(topologicalSortBFS(adj));
 
     }
 }
